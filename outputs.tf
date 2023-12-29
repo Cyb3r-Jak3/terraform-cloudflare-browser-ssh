@@ -23,3 +23,8 @@ output "tunnel_token" {
   value       = cloudflare_tunnel.ssh_tunnel.tunnel_token
   sensitive   = true
 }
+
+output "tunnel_id" {
+  description = "Tunnel ID"
+  value       = cloudflare_tunnel.ssh_tunnel.id
+}

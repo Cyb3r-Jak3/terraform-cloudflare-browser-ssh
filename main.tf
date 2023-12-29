@@ -2,7 +2,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = ">= 4.9.0"
+      version = ">= 4.21.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -12,12 +12,12 @@ terraform {
 }
 
 resource "random_password" "tunnel_secret" {
-  length = 64
+  length = 128
 }
 
 resource "cloudflare_tunnel" "ssh_tunnel" {
   account_id = var.account_id
-  name       = var.tunnel_name
+  name       = local.tunnel_name
   secret     = base64encode(random_password.tunnel_secret.result)
   config_src = "cloudflare"
 }
@@ -53,7 +53,7 @@ resource "cloudflare_access_application" "app" {
   domain                     = var.domain
   enable_binding_cookie      = false
   http_only_cookie_attribute = true
-  name                       = var.name
+  name                       = var.access_application_name != "" ? var.access_application_name : "SSH for ${var.domain}"
   session_duration           = var.session_duration
   skip_interstitial          = var.skip_interstitial
   type                       = "ssh"

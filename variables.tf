@@ -48,3 +48,8 @@ variable "ssh_port" {
   type        = number
   default     = 22
 }
+
+variable "access_application_name" {
+  description = "Name of the Access Application. Defaults to 'SSH for $${var.domain}'"
+  type        = string
+}

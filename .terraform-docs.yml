@@ -9,8 +9,8 @@ output:
   template: |-
     # terraform-cloudflare-browser-ssh
 
-    This is a simple terraform modules that creates a tunnel to a host using cloudflare's browser ssh.
-    Includes a configured tunnel, access application, access policy, and ssh CA certificate.
+    This is a simple terraform modules that creates a tunnel to a host using Cloudflare's browser ssh.
+    Includes a configured Tunnel, Access Application, Access Policy, and SSH CA certificate.
     <!-- BEGIN_TF_DOCS -->
     {{ .Content }}
     <!-- END_TF_DOCS -->
