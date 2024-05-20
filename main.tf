@@ -2,7 +2,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = ">= 4.21.0"
+      version = ">= 4.33.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -52,11 +52,12 @@ resource "cloudflare_access_application" "app" {
   auto_redirect_to_identity  = length(var.allowed_idps) == 1 ? true : false
   domain                     = var.domain
   enable_binding_cookie      = false
-  http_only_cookie_attribute = true
+  http_only_cookie_attribute = false
   name                       = var.access_application_name != "" ? var.access_application_name : "SSH for ${var.domain}"
   session_duration           = var.session_duration
   skip_interstitial          = var.skip_interstitial
   type                       = "ssh"
+  policies                   = var.policies
 }
 
 resource "cloudflare_access_ca_certificate" "ssh_cert" {
