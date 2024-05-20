@@ -53,3 +53,9 @@ variable "access_application_name" {
   description = "Name of the Access Application. Defaults to 'SSH for $${var.domain}'"
   type        = string
 }
+
+variable "policies" {
+  description = "List of policies to apply to the application"
+  type        = list(string)
+  default     = []
+}

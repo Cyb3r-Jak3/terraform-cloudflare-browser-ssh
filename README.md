@@ -1,20 +1,20 @@
 # terraform-cloudflare-browser-ssh
 
 This is a simple terraform modules that creates a tunnel to a host using Cloudflare's browser ssh.
-Includes a configured Tunnel, Access Application, Access Policy, and SSH CA certificate.
+Includes a configured Tunnel, Access Application, and SSH CA certificate.
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | >= 4.21.0 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | >= 4.33.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.5.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | >= 4.21.0 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | >= 4.33.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.5.1 |
 
 ## Modules
@@ -40,6 +40,7 @@ No modules.
 | <a name="input_allowed_idps"></a> [allowed\_idps](#input\_allowed\_idps) | List of IDPs allowed to authenticate to the application | `list(string)` | n/a | yes |
 | <a name="input_app_launcher_visible"></a> [app\_launcher\_visible](#input\_app\_launcher\_visible) | Whether to show the app launcher | `bool` | `true` | no |
 | <a name="input_domain"></a> [domain](#input\_domain) | Domain to use for the SSH Tunnel | `string` | n/a | yes |
+| <a name="input_policies"></a> [policies](#input\_policies) | List of policies to apply to the application | `list(string)` | `[]` | no |
 | <a name="input_session_duration"></a> [session\_duration](#input\_session\_duration) | Session duration for the application | `string` | `"24h"` | no |
 | <a name="input_skip_interstitial"></a> [skip\_interstitial](#input\_skip\_interstitial) | Whether to skip the interstitial page | `bool` | `false` | no |
 | <a name="input_ssh_host"></a> [ssh\_host](#input\_ssh\_host) | Host to connect to via SSH | `string` | `"localhost"` | no |
