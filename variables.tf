@@ -59,3 +59,8 @@ variable "policies" {
   type        = list(string)
   default     = []
 }
+
+variable "team_name" {
+  description = "Zero Trust Organization Team Name"
+  type        = string
+}

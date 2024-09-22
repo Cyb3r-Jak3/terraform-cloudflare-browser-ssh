@@ -7,14 +7,14 @@ Includes a configured Tunnel, Access Application, and SSH CA certificate.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | >= 4.33.0 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | >= 4.40.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.5.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | >= 4.33.0 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | >= 4.40.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.5.1 |
 
 ## Modules
@@ -25,10 +25,10 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [cloudflare_access_application.app](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_application) | resource |
-| [cloudflare_access_ca_certificate.ssh_cert](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_ca_certificate) | resource |
-| [cloudflare_tunnel.ssh_tunnel](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel) | resource |
-| [cloudflare_tunnel_config.ssh_tunnel](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel_config) | resource |
+| [cloudflare_zero_trust_access_application.app](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_application) | resource |
+| [cloudflare_zero_trust_access_short_lived_certificate.ssh_cert](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_short_lived_certificate) | resource |
+| [cloudflare_zero_trust_tunnel_cloudflared.ssh_tunnel](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared) | resource |
+| [cloudflare_zero_trust_tunnel_cloudflared_config.ssh_tunnel](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_config) | resource |
 | [random_password.tunnel_secret](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 
 ## Inputs
@@ -45,6 +45,7 @@ No modules.
 | <a name="input_skip_interstitial"></a> [skip\_interstitial](#input\_skip\_interstitial) | Whether to skip the interstitial page | `bool` | `false` | no |
 | <a name="input_ssh_host"></a> [ssh\_host](#input\_ssh\_host) | Host to connect to via SSH | `string` | `"localhost"` | no |
 | <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | Port to connect to via SSH | `number` | `22` | no |
+| <a name="input_team_name"></a> [team\_name](#input\_team\_name) | Zero Trust Organization Team Name | `string` | n/a | yes |
 | <a name="input_tunnel_name"></a> [tunnel\_name](#input\_tunnel\_name) | Name of the SSH Tunnel | `string` | `""` | no |
 
 ## Outputs
