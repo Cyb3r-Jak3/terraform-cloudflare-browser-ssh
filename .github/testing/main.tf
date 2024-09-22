@@ -18,11 +18,6 @@ variable "account_id" {
   type = string
 }
 
-data "cloudflare_zero_trust_access_identity_provider" "onetimepin" {
-    account_id = var.account_id
-    name       = "One Time Pin"
-}
-
 resource "random_string" "tunnel_name" {
   length  = 32
   special = false
@@ -36,5 +31,5 @@ module "test1" {
     tunnel_name = "actions_testing"
     domain = "${random_string.tunnel_name.result}.terraform.cyberjake.xyz"
     access_application_name = "GITHUB ACTIONS: SSH for ${random_string.tunnel_name.result}"
-    allowed_idps = [data.cloudflare_zero_trust_access_identity_provider.onetimepin.id]
+    allowed_idps = ["c8599d44-834f-4db7-afb2-ac226ea68d42"]
 }
