@@ -34,9 +34,9 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "ssh_tunnel" {
       service  = "ssh://${var.ssh_host}:${var.ssh_port}"
       origin_request {
         access {
-          required = true
+          required  = true
           team_name = var.team_name
-          aud_tag  = [cloudflare_zero_trust_access_application.app.aud]
+          aud_tag   = [cloudflare_zero_trust_access_application.app.aud]
         }
       }
     }
