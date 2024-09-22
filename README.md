@@ -45,6 +45,7 @@ No modules.
 | <a name="input_skip_interstitial"></a> [skip\_interstitial](#input\_skip\_interstitial) | Whether to skip the interstitial page | `bool` | `false` | no |
 | <a name="input_ssh_host"></a> [ssh\_host](#input\_ssh\_host) | Host to connect to via SSH | `string` | `"localhost"` | no |
 | <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | Port to connect to via SSH | `number` | `22` | no |
+| <a name="input_team_name"></a> [team\_name](#input\_team\_name) | Zero Trust Organization Team Name | `string` | n/a | yes |
 | <a name="input_tunnel_name"></a> [tunnel\_name](#input\_tunnel\_name) | Name of the SSH Tunnel | `string` | `""` | no |
 
 ## Outputs

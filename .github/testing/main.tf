@@ -32,4 +32,5 @@ module "test1" {
     domain = "${random_string.tunnel_name.result}.terraform.cyberjake.xyz"
     access_application_name = "GITHUB ACTIONS: SSH for ${random_string.tunnel_name.result}"
     allowed_idps = ["c8599d44-834f-4db7-afb2-ac226ea68d42"]
+    team_name = "terraform"
 }
