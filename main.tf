@@ -2,7 +2,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = ">= 4.33.0"
+      version = ">= 4.40.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -15,16 +15,16 @@ resource "random_password" "tunnel_secret" {
   length = 128
 }
 
-resource "cloudflare_tunnel" "ssh_tunnel" {
+resource "cloudflare_zero_trust_tunnel_cloudflared" "ssh_tunnel" {
   account_id = var.account_id
   name       = local.tunnel_name
   secret     = base64encode(random_password.tunnel_secret.result)
   config_src = "cloudflare"
 }
 
-resource "cloudflare_tunnel_config" "ssh_tunnel" {
+resource "cloudflare_zero_trust_tunnel_cloudflared_config" "ssh_tunnel" {
   account_id = var.account_id
-  tunnel_id  = cloudflare_tunnel.ssh_tunnel.id
+  tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.ssh_tunnel.id
   config {
     warp_routing {
       enabled = false
@@ -35,7 +35,7 @@ resource "cloudflare_tunnel_config" "ssh_tunnel" {
       origin_request {
         access {
           required = true
-          aud_tag  = [cloudflare_access_application.app.aud]
+          aud_tag  = [cloudflare_zero_trust_access_application.app.aud]
         }
       }
     }
@@ -45,7 +45,7 @@ resource "cloudflare_tunnel_config" "ssh_tunnel" {
   }
 }
 
-resource "cloudflare_access_application" "app" {
+resource "cloudflare_zero_trust_access_application" "app" {
   account_id                 = var.account_id
   allowed_idps               = var.allowed_idps
   app_launcher_visible       = var.app_launcher_visible
@@ -60,7 +60,7 @@ resource "cloudflare_access_application" "app" {
   policies                   = var.policies
 }
 
-resource "cloudflare_access_ca_certificate" "ssh_cert" {
+resource "cloudflare_zero_trust_access_short_lived_certificate" "ssh_cert" {
   account_id     = var.account_id
-  application_id = cloudflare_access_application.app.id
+  application_id = cloudflare_zero_trust_access_application.app.id
 }
