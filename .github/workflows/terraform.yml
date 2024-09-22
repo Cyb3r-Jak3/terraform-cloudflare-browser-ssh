@@ -14,7 +14,7 @@ jobs:
 
         - name: Terraform Docs
           run: |
-              docker run --rm --volume "$(pwd):/terraform-docs" -u $(id -u) mine.jfrog.cyberjake.xyz/terraform-docs/terraform-docs:0.18.0 --output-check /terraform-docs
+              docker run --rm --volume "$(pwd):/terraform-docs" -u $(id -u) mine.jfrog.cyberjake.xyz/terraform-docs:0.18.0 --output-check /terraform-docs
         
         - name: Terraform Format Check
           run: terraform fmt -check -recursive
