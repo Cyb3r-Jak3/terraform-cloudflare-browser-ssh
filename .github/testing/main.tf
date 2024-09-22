@@ -20,7 +20,7 @@ variable "account_id" {
 
 data "cloudflare_zero_trust_access_identity_provider" "onetimepin" {
     account_id = var.account_id
-    name       = "One-Time PIN"
+    name       = "One Time Pin"
 }
 
 resource "random_string" "tunnel_name" {
